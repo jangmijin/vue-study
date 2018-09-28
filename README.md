@@ -1,2 +1,2 @@
 # vue-study
-복습
+vue.js 기초부터 다시 복습하기
