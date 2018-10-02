@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, inital-scale=1.0" />
+    <title>vue emit(이벤트 발생시키고 수신하기)</title>
+  </head>
+  <body>
+    <div id="app">
+      <!--v-on 문법주의하기-->
+      <child-component v-on:show-log="printText"></child-component>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script><!-- 라이브러리 로딩 -->
+    <script>
+      Vue.component('child-component',{
+        template:'<button v-on:click="showLog">show</button>',
+        methods:{
+          showLog:function(){
+            this.$emit('show-log');
+          }
+        }
+      });
+      var app = new Vue({
+        el:'#app',
+        data:{
+          message:'hello vue! passed from parent component'
+        },
+        methods:{
+          printText:function(){
+            console.log("received an event");
+          }
+        }
+      })
+    </script>
+  </body>
+</html>
